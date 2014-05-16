@@ -1,0 +1,20 @@
+---
+# Defines tasks applicable across all hosts
+
+- name: Install Development Tools
+  yum: name="@Development Tools" state=present
+
+- name: Install minimum packages
+  yum: name={{ item }} state=present
+  with_items:
+    - sudo
+    - vim
+    - zsh
+    - git
+    - screen
+    - wget
+    - xz-libs
+
+- include: python_27.yml tags=python
+- include: pip.yml tags=python
+
