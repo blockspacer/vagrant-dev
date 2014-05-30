@@ -40,3 +40,6 @@ venv/*
 
 # Vagrant
 .vagrant/*
+
+# VIM
+*.swp
