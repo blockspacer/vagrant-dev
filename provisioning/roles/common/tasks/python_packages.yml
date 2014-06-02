@@ -1,0 +1,11 @@
+---
+# Defines python packages to install
+
+- name: Install Python packages
+  shell: /usr/local/bin/pip{{ base_python_version }} install {{ item }}
+  with_items:
+    - virtualenv
+    - ipython
+    - ipdb
+    - epdb
+    - pandas

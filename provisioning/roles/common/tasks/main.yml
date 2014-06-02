@@ -4,17 +4,50 @@
 - name: Install Development Tools
   yum: name="@Development Tools" state=present
 
+- name: Remove old packages
+  yum: name={{ item }} state=removed
+  with_items:
+    - ruby
+
 - name: Install minimum packages
   yum: name={{ item }} state=present
   with_items:
     - sudo
     - vim
     - zsh
-    - git
     - screen
     - wget
     - xz-libs
+    - bzip2-devel
+    - zlib
+    - zlib-devel
+    - openssl
+    - openssl-devel
+    - curl
+    - libcurl-devel
+    - git
+    - expat
+    - expat-devel
+    - perl-ExtUtils-MakeMaker
+    - libuuid
+    - libuuid-devel
+
+- name: Install additional Developer Tools
+  yum: name={{ item }} state=present
+  with_items:
+    - svn
 
 - include: python_27.yml tags=python
 - include: pip.yml tags=python
+- include: python_packages.yml tags=python
 
+- include: rbenv.yml tags=ruby
+
+- include: tig.yml tags=git
+- include: git.yml tags=git
+
+- name: Remove tools that have been superseded
+  yum: name={{ item }} state=removed
+  with_items:
+    - git
+    - git-svn
