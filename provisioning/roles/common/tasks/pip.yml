@@ -1,0 +1,23 @@
+---
+# Install Python package management
+
+- name: Download ez_setup
+  get_url: url=https://bootstrap.pypa.io/ez_setup.py
+           dest=/tmp/ez_setup.py
+  register: ez_setup_result
+
+
+- name: Run ezsetup
+  shell: /usr/local/bin/python2.7 ez_setup-pip.py
+         chdir=/tmp
+  when: ez_setup_result.changed
+
+- name: Download pip
+  get_url: url=https://bootstrap.pypa.io/get-pip.py
+           dest=/tmp/get-pip.py
+  register: pip_result
+
+- name: Run get-pip
+  shell: /usr/local/bin/python2.7 get-pip.py
+         chdir=/tmp
+  when: pip_result.changed

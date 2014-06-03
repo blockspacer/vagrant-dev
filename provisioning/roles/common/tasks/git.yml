@@ -1,0 +1,22 @@
+---
+# file: roles/common/tasks/git.yml
+#
+# git clone https://github.com/git/git.git
+# make --prefix=/usr/local
+# make install
+
+- name: Fetch git
+  git: repo=https://github.com/git/git.git
+       dest=/tmp/git
+       version={{ git_version }}
+  register: result
+
+- name: Build & Install git
+  shell: make prefix=/usr/local all
+         chdir=/tmp/git
+  when: result.changed
+
+- name: Build & Install git
+  shell: make prefix=/usr/local install
+         chdir=/tmp/git
+  when: result.changed

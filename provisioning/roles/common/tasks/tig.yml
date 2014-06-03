@@ -1,0 +1,32 @@
+---
+# file: roles/common/tasks/tig.yml
+#
+# wget http://jonas.nitro.dk/tig/releases/tig-2.0.tar.gz
+# tar xvzf tig-2.0.tar.gz
+# cd tig-2.0
+# ./configure --prefix=/usr/local
+# make
+# make install
+#
+
+- name: Download tig {{ tig_version }}
+  get_url: url=http://jonas.nitro.dk/tig/releases/tig-{{ tig_version }}.tar.gz
+           dest=/tmp/tig-{{ tig_version }}.tar.gz
+  register: get_url_result
+
+- name: Untar tig {{ tig_version }}
+  shell: tar -xvzf /tmp/tig-{{ tig_version }}.tar.gz
+         chdir=/tmp
+  when: get_url_result.changed
+
+- name: Configure tig {{ tig_version }}
+  shell: ./configure --prefix=/usr/local
+         chdir=/tmp/tig-{{ tig_version }}
+  when: get_url_result.changed
+
+- name: Build and Install tig {{ tig_version }}
+  shell: make install
+         chdir=/tmp/tig-{{ tig_version }}
+  when: get_url_result.changed
+
+
