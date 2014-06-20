@@ -31,6 +31,7 @@
     - perl-ExtUtils-MakeMaker
     - libuuid
     - libuuid-devel
+    - mlocate
 
 - name: Install additional Developer Tools
   yum: name={{ item }} state=present
@@ -45,6 +46,8 @@
 
 - include: tig.yml tags=git
 - include: git.yml tags=git
+- include: autoconf.yml tags=developer
+- include: thrift.yml tags=developer
 
 - name: Remove tools that have been superseded
   yum: name={{ item }} state=removed

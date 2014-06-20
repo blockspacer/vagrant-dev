@@ -1,0 +1,23 @@
+---
+# Install Thrift dependancies
+
+- name: Download Thrift
+  git: repo=https://git-wip-us.apache.org/repos/asf/thrift.git
+       dest=/tmp/thrift.git
+       version={{ thrift_version }}
+  register: thrift_result
+
+- name: Bootstrap thrift-{{ thrift_version }}
+  shell: ./bootstrap.sh
+         chdir=/tmp/thrift.git
+  when: thrift_result.changed
+
+- name: Configure thrift-{{ thrift_version }}
+  shell: ./configure --prefix=/usr/local --enable-libs=no
+         chdir=/tmp/thrift.git
+  when: thrift_result.changed
+
+- name: Build and Install thrift-{{ thrift_version }}
+  shell: make install
+         chdir=/tmp/thrift.git
+  when: thrift_result.changed

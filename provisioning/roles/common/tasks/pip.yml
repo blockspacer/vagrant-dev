@@ -6,7 +6,6 @@
            dest=/tmp/ez_setup.py
   register: ez_setup_result
 
-
 - name: Run ezsetup
   shell: /usr/local/bin/python2.7 ez_setup-pip.py
          chdir=/tmp
