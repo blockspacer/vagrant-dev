@@ -11,7 +11,7 @@
        version={{ git_version }}
   register: result
 
-- name: Build & Install git
+- name: Build All
   shell: make prefix=/usr/local all
          chdir=/tmp/git
   when: result.changed

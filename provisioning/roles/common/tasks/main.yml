@@ -48,6 +48,7 @@
 - include: git.yml tags=git
 - include: autoconf.yml tags=developer
 - include: thrift.yml tags=developer
+- include: zsh.yml tags=developer
 
 - name: Remove tools that have been superseded
   yum: name={{ item }} state=removed
