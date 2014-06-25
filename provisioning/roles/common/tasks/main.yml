@@ -48,7 +48,12 @@
 - include: git.yml tags=git
 - include: autoconf.yml tags=developer
 - include: thrift.yml tags=developer
-- include: zsh.yml tags=developer
+- include: oh-my-zsh.yml tags=developer
+
+- name: Set Zsh as default shell
+  shell: chsh -s $(which zsh)
+  when: zsh_result.changed
+  sudo: False
 
 - name: Remove tools that have been superseded
   yum: name={{ item }} state=removed
