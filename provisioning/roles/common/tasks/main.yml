@@ -41,7 +41,6 @@
 - include: python_27.yml tags=python
 - include: pip.yml tags=python
 - include: python_packages.yml tags=python
-- include: pypy.yml tags=python
 - include: rbenv.yml tags=ruby
 
 - include: tig.yml tags=git
