@@ -9,3 +9,4 @@
     - ipdb
     - epdb
     - pandas
+    - pygments

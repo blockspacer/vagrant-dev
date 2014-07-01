@@ -41,7 +41,7 @@
 - include: python_27.yml tags=python
 - include: pip.yml tags=python
 - include: python_packages.yml tags=python
-
+- include: pypy.yml tags=python
 - include: rbenv.yml tags=ruby
 
 - include: tig.yml tags=git
@@ -50,10 +50,10 @@
 - include: thrift.yml tags=developer
 - include: oh-my-zsh.yml tags=developer
 
-- name: Set Zsh as default shell
-  shell: chsh -s $(which zsh)
-  when: zsh_result.changed
-  sudo: False
+#- name: Set Zsh as default shell
+#  shell: chsh -s $(which zsh)
+#  when: zsh_result.changed
+#  sudo: False
 
 - name: Remove tools that have been superseded
   yum: name={{ item }} state=removed

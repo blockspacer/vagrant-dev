@@ -1,0 +1,39 @@
+---
+# file: build-pypy.yml
+#
+# wget https://bitbucket.org/pypy/pypy/downloads/pypy-2.3.1-src.tar.bz2
+# tar xvjf pypy-2.3.1-src.tar.bz2
+# cd pypy-2.3.1-src
+# ./configure --prefix=/usr/local
+# make
+#
+- name: Install PyPy dependant packages
+  yum: name={{ item }} state=present
+  with_items:
+    - libffi
+    - gcc
+    - make
+    - libffi-devel
+    - sqlite-devel
+    - pkgconfig
+    - zlib-devel
+    - bzip2-devel
+    - ncurses-devel
+    - expat-devel
+    - openssl-devel
+    - gc-devel
+
+- name: Download PyPy
+  get_url: url=https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-{{ pypy_version }}-linux_x86_64-portable.tar.bz2
+           dest=/tmp/pypy-{{ pypy_version }}-linux_x86_64-portable.tar.bz2
+  register: get_url_result
+
+- name: Untar PyPy
+  shell: tar -xvjf /tmp/pypy-{{ pypy_version }}-linux_x86_64-portable.tar.bz2
+         chdir=/tmp
+  when: get_url_result.changed
+
+- name: Move to /opt
+  shell: mv /tmp/pypy-{{ pypy_version }}-linux_x86_64-portable /opt
+  when: get_url_result.changed
+

@@ -7,7 +7,10 @@ ruby_version: 1.9.3-p547
 git_version: v2.0.0-rc4
 shell_rc: .bashrc
 thrift_version: 0.9.1
+pypy_version: 2.3.1
 
 autoconf_old: 2.63-5.1.el6
 autoconf_new: 2.69-12.2
 
+local_bin:
+  PATH: "{{ lookup('env', 'PATH') }}:/usr/local/bin"
