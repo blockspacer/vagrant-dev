@@ -6,4 +6,8 @@
     - vars/all.yml
 
   roles:
+    - yum_repos
     - common
+    - common_dev
+    - ruby_dev
+    - python_dev

@@ -1,0 +1,9 @@
+---
+# Configure Ruby packages
+
+- name: Remove old packages
+  yum: name={{ item }} state=removed
+  with_items:
+    - ruby
+
+- include: rbenv.yml tags=ruby

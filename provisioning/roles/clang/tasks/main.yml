@@ -1,0 +1,8 @@
+---
+# Add Clang and LLVM Compiler chain
+
+- name: Install Clang/LLVM packages
+  yum: name={{ item }} state=removed
+  with_items:
+    - clang
+    - llvm

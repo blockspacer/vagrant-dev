@@ -2,7 +2,7 @@
 # Defines python packages to install
 
 - name: Install Python packages
-  shell: /usr/local/bin/pip{{ base_python_version }} install {{ item }}
+  pip: name={{ item }}
   with_items:
     - virtualenv
     - ipython
@@ -10,3 +10,5 @@
     - epdb
     - pandas
     - pygments
+  environment: local_bin
+
