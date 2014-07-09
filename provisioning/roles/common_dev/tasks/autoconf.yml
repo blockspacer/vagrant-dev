@@ -7,5 +7,5 @@
   register: autoconf_result
 
 - name: Install new Autoconf RPM
-  yum: name=autoconf-{{ autoconf_new }}.noarch.rpm state=present
+  yum: name=/tmp/autoconf-{{ autoconf_new }}.noarch.rpm state=present
   when: autoconf_result.changed

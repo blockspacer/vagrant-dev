@@ -1,12 +1,12 @@
 ---
 # file: roles/common/tasks/git.yml
 #
-# git clone https://github.com/git/git.git
+# git clone git://github.com/git/git.git
 # make --prefix=/usr/local
 # make install
 
 - name: Fetch git
-  git: repo=https://github.com/git/git.git
+  git: repo=git://github.com/git/git.git
        dest=/tmp/git
        version={{ git_version }}
   register: result

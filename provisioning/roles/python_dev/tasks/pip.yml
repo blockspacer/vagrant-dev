@@ -6,8 +6,8 @@
            dest=/tmp/ez_setup.py
   register: ez_setup_result
 
-- name: Run ezsetup
-  shell: /usr/local/bin/python2.7 ez_setup-pip.py
+- name: Run ez_setup
+  shell: /usr/local/bin/python2.7 ez_setup.py
          chdir=/tmp
   when: ez_setup_result.changed
 

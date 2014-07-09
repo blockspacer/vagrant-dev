@@ -10,5 +10,8 @@
     - epdb
     - pandas
     - pygments
+    - twisted
+    - pystache
+    - flask
   environment: local_bin
 
