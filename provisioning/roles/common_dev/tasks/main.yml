@@ -26,6 +26,7 @@
     - perl-ExtUtils-MakeMaker
     - libuuid
     - libuuid-devel
+    - cmake
 
 - include: tig.yml tags=git
 - include: git.yml tags=git
