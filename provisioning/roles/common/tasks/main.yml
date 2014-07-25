@@ -1,6 +1,13 @@
 ---
 # Defines tasks applicable across all hosts
 
+- name: Install System sudoers file
+  template: src=sudoers.j2
+            dest=/etc/sudoers
+            owner=root
+            group=root
+            mode=0440
+
 - name: Install minimum packages
   yum: name={{ item }} state=present
   with_items:
@@ -17,3 +24,5 @@
     - iftop
     - htop
     - yum-plugin-fastestmirror
+    - ncurses
+

@@ -20,3 +20,10 @@
   shell: make prefix=/usr/local install
          chdir=/tmp/git
   when: result.changed
+
+- name: Remove tools that have been superseded
+  yum: name={{ item }} state=removed
+  with_items:
+    - git
+    - git-svn
+  when: result.changed

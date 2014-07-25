@@ -20,13 +20,23 @@
     - openssl-devel
     - curl
     - libcurl-devel
-    - git
     - expat
     - expat-devel
     - perl-ExtUtils-MakeMaker
     - libuuid
     - libuuid-devel
     - cmake
+    - ncurses-devel
+
+- name: Check for git
+  command: which git
+  register: has_git
+
+- name: Install git
+  yum: name={{ item }} state=present
+  with_items:
+    - git
+  when: has_git.stdout == ''
 
 - include: tig.yml tags=git
 - include: git.yml tags=git
@@ -43,9 +53,3 @@
 #  shell: chsh -s $(which zsh)
 #  when: zsh_result.changed
 #  sudo: False
-
-- name: Remove tools that have been superseded
-  yum: name={{ item }} state=removed
-  with_items:
-    - git
-    - git-svn
