@@ -1,0 +1,6 @@
+---
+# Python development packages
+
+- include: python_27.yml tags=python
+- include: pip.yml tags=python
+- include: python_packages.yml tags=python

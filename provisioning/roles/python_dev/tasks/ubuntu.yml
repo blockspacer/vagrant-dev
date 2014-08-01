@@ -1,0 +1,26 @@
+---
+# Python development packages
+
+- name: Install native Python packages
+  apt: name={{ item }} state=present
+  with_items:
+    - python
+    - python-pip
+    - python-setuptools
+    - python-virtualenv
+    - ipython
+    - python-ipdb
+    - python-pandas
+    - python-matplotlib
+    - python-libpcap
+    - python-flask
+
+- name: Install Python packages
+  pip: name={{ item }}
+  with_items:
+    - epdb
+    - pygments
+    - twisted
+    - pystache
+    - invoke
+

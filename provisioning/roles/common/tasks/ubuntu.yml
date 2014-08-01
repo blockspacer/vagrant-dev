@@ -1,0 +1,24 @@
+---
+# Defines tasks applicable across all hosts
+
+- name: Make sure apt-get is update to date
+  apt: update_cache=yes
+
+- name: Install minimum packages
+  apt: name={{ item }} state=present
+  with_items:
+    - sudo
+    - tmux
+    - wget
+    - xz-utils
+    - zlib1g
+    - zlibc
+    - openssl
+    - curl
+    - expat
+    - libuuid1
+    - uuid-runtime
+    - mlocate
+    - iftop
+    - htop
+    - libncurses5

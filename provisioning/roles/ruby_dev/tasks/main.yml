@@ -5,5 +5,13 @@
   yum: name={{ item }} state=removed
   with_items:
     - ruby
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - include: rbenv.yml tags=ruby
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Install minimum packages
+  apt: name={{ item }} state=present
+  with_items:
+    - rbenv
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

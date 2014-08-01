@@ -1,28 +1,8 @@
 ---
 # Defines tasks applicable across all hosts
 
-- name: Install System sudoers file
-  template: src=sudoers.j2
-            dest=/etc/sudoers
-            owner=root
-            group=root
-            mode=0440
+- include: centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-- name: Install minimum packages
-  yum: name={{ item }} state=present
-  with_items:
-    - sudo
-    - screen
-    - wget
-    - xz-libs
-    - zlib
-    - openssl
-    - curl
-    - expat
-    - libuuid
-    - mlocate
-    - iftop
-    - htop
-    - yum-plugin-fastestmirror
-    - ncurses
-
+- include: ubuntu.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

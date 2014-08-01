@@ -14,8 +14,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     parallels.check_guest_tools = true
   end
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "parallels/centos-6.5"
+  # Define multiple boxes that we can use
+  config.vm.define 'ubuntu', primary: true do |ubuntu|
+    ubuntu.vm.box = "parallels/ubuntu-12.04"
+  end
+
+  config.vm.define 'centos', autostart: false do |centos|
+    centos.vm.box = "parallels/centos-6.5"
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

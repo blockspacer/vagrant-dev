@@ -1,0 +1,48 @@
+---
+# Common Developer configuration
+
+- name: Install Development Tools
+  yum: name="@Development Tools" state=present
+
+- name: Install minimum packages
+  yum: name={{ item }} state=present
+  with_items:
+    - sudo
+    - vim
+    - zsh
+    - tmux
+    - wget
+    - xz-libs
+    - bzip2-devel
+    - zlib
+    - zlib-devel
+    - openssl
+    - openssl-devel
+    - curl
+    - libcurl-devel
+    - expat
+    - expat-devel
+    - perl-ExtUtils-MakeMaker
+    - libuuid
+    - libuuid-devel
+    - cmake
+    - ncurses-devel
+
+- name: Check for git
+  command: which git
+  register: has_git
+
+- name: Install git
+  yum: name={{ item }} state=present
+  with_items:
+    - git
+  when: has_git.stdout == ''
+
+- include: tig.yml tags=git
+- include: git.yml tags=git
+- include: autoconf.yml tags=developer
+
+- name: Install additional Developer Tools
+  yum: name={{ item }} state=present
+  with_items:
+    - svn

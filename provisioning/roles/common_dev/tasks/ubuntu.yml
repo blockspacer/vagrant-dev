@@ -1,0 +1,35 @@
+---
+# Common Developer configuration
+
+- name: Install Development Tools
+  apt: name=build-essential state=present
+
+- name: Install minimum packages
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - libtool
+    - autoconf
+    - automake
+    - sudo
+    - vim
+    - zsh
+    - tmux
+    - wget
+    - openssl
+    - curl
+    - expat
+    - zlib1g-dev
+    - uuid-dev
+    - iftop
+    - htop
+    - libncurses5-dev
+    - cmake
+    - subversion
+    - git
+    - git-svn
+    - tig
+    - libboost1.48-all-dev
+    - libevent-dev
+    - libssl-dev
+    - libmodule-install-perl

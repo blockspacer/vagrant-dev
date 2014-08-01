@@ -1,6 +1,19 @@
 ---
 # Install Thrift dependancies
 
+- name: Install dependant packages
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - libtool
+    - autoconf
+    - automake
+    - flex
+    - bison
+    - git
+    - pkg-config
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 - name: Download Thrift
   git: repo=https://git-wip-us.apache.org/repos/asf/thrift.git
        dest=/tmp/thrift.git

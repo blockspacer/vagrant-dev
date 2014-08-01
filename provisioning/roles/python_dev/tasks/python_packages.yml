@@ -13,5 +13,6 @@
     - twisted
     - pystache
     - flask
+    - invoke
   environment: local_bin
 
