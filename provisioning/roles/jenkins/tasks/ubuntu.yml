@@ -8,3 +8,26 @@
   apt: name={{ item }} state=present
   with_items:
     - jenkins
+    - jenkins-cli
+
+- name: Install Jenkins plugins
+  shell: jenkins-cli -s http://127.0.0.1:8080 install-plugin {{ item }}
+  with_items:
+    - git
+    - subversion
+    - ssh
+    - ssh-slaves
+    - python
+    - greenballs
+    - mailer
+    - backup
+    - build-timeout
+    - build-pipeline-plugin
+    - copyartifact
+    - postbuild-task
+    - promoted-builds
+    - throttle-concurrents
+    - windows-slaves
+  notify:
+    - Restart Jenkins
+

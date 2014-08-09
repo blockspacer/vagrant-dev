@@ -1,0 +1,5 @@
+---
+# Jenkins Event Handlerso
+
+- name: Restart Jenkins
+  service: name=jenkins state=restarted
