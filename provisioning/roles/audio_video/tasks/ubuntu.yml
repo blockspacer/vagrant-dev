@@ -1,0 +1,23 @@
+---
+# Ubuntu Jenkins configuration
+
+- name: Make sure apt-get is update to date
+  apt: update_cache=yes
+
+- name: Install FFMpeg
+  apt: name={{ item }} state=present
+  with_items:
+    - ffmpeg
+
+- name: Install GStreamer
+  apt: name={{ item }} state=present
+  with_items:
+    - libgstreamer0.10-0
+    - libgstreamer0.10-dev
+    - gstreamer0.10-alsa
+    - gstreamer0.10-plugins-base
+    - gstreamer0.10-plugins-base-apps
+    - gstreamer0.10-plugins-good
+    - gstreamer0.10-pulseaudio
+    - gstreamer0.10-tools
+    - gstreamer0.10-ffmpeg
