@@ -1,0 +1,10 @@
+---
+# Ubuntu Jenkins configuration
+
+- name: Make sure apt-get is update to date
+  apt: update_cache=yes
+
+- name: Install Jenkins
+  apt: name={{ item }} state=present
+  with_items:
+    - jenkins
