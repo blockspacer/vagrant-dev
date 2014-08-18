@@ -16,3 +16,4 @@
   pip: name={{ item }}
   with_items:
     - pyusb
+    - pyserial
