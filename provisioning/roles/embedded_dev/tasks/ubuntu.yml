@@ -1,0 +1,18 @@
+---
+# Embedded Development for Ubuntu
+#
+- name: Make sure apt-get is update to date
+  apt: update_cache=yes
+
+- name: Install minimum packages
+  apt: name={{ item }} state=present
+  with_items:
+    - parted
+    - screen
+    - uboot-mkimage
+    - dosfstools
+
+- name: Install Embedded Python packages
+  pip: name={{ item }}
+  with_items:
+    - pyusb

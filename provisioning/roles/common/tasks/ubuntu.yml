@@ -22,3 +22,8 @@
     - iftop
     - htop
     - libncurses5
+
+- name: Remove unused packages
+  apt: name={{ item }} state=absent
+  with_items:
+    - puppet
