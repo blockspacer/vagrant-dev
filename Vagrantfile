@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Define multiple boxes that we can use
   config.vm.define 'ubuntu', primary: true do |ubuntu|
-    ubuntu.vm.box = "parallels/ubuntu-12.04"
+    ubuntu.vm.box = "parallels/ubuntu-14.04"
     ubuntu.vm.hostname = "ubuntu-1"
     ubuntu.vm.network "private_network", ip: "192.168.10.100"
   end

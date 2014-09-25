@@ -26,7 +26,7 @@
     - git
     - git-svn
     - tig
-    - libboost1.48-all-dev
+    - libboost-all-dev
     - libevent-dev
     - libssl-dev
     - libmodule-install-perl
