@@ -9,6 +9,7 @@
   with_items:
     - sudo
     - vim
+    - ctags
     - zsh
     - tmux
     - wget

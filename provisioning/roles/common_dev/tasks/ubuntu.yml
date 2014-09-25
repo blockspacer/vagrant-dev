@@ -8,6 +8,7 @@
     - libtool
     - autoconf
     - automake
+    - exuberant-ctags
     - sudo
     - vim
     - zsh
