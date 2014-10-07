@@ -37,6 +37,7 @@
     - poco-xml
     - poco-zip
     - poco-devel
+    - docker-io
 
 - name: Check for git
   command: which git

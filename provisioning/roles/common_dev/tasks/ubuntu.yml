@@ -41,3 +41,4 @@
     - libpocoxml9
     - libpocozip9
     - libpocosqlite9
+    - docker.io
