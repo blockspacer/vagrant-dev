@@ -1,7 +1,7 @@
 ---
 # Defines tasks applicable across all hosts
 
-- name: Make sure apt-get is update to date
+- name: Make sure apt-get is up to date
   apt: update_cache=yes
 
 - name: Install minimum packages

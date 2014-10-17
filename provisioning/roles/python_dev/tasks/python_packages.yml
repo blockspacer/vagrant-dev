@@ -14,5 +14,6 @@
     - pystache
     - flask
     - invoke
+    - thrift
   environment: local_bin
 

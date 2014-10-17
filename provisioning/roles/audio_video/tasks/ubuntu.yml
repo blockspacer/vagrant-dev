@@ -1,7 +1,7 @@
 ---
 # Ubuntu Jenkins configuration
 
-- name: Make sure apt-get is update to date
+- name: Make sure apt-get is up to date
   apt: update_cache=yes
 
 - name: Install FFMpeg

@@ -3,5 +3,5 @@
 
 - name: Download and Install Oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git
-       dest=/home/vagrant/.oh-my-zsh
+       dest=~{{ user }}/.oh-my-zsh
   sudo: False

@@ -23,4 +23,5 @@
     - twisted
     - pystache
     - invoke
+    - thrift
 
