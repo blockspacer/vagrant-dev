@@ -7,7 +7,14 @@
 # ./configure --prefix=/usr/local
 # make
 # make install
-#
+
+- name: Remove default tig package
+  yum: name=tig state=absent
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Remove default tig package
+  apt: name=tig state=absent
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Download tig {{ tig_version }}
   get_url: url=http://jonas.nitro.dk/tig/releases/tig-{{ tig_version }}.tar.gz

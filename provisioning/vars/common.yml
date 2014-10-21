@@ -5,6 +5,7 @@ user: vagrant
 shell_rc: .bashrc
 thrift_version: 0.9.1
 pypy_version: 2.3.1
+tig_version: 2.0.2
 
 ccache_directory: /var/cache/ccache
 

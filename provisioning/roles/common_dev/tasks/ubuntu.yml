@@ -26,7 +26,6 @@
     - subversion
     - git
     - git-svn
-    - tig
     - libboost-all-dev
     - libevent-dev
     - libssl-dev
