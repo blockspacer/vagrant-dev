@@ -6,5 +6,7 @@ shell_rc: .bashrc
 thrift_version: 0.9.1
 pypy_version: 2.3.1
 
+ccache_directory: /var/cache/ccache
+
 local_bin:
   PATH: "{{ lookup('env', 'PATH') }}:/usr/local/bin"

@@ -10,6 +10,7 @@
 - include: thrift.yml tags=developer
 - include: oh-my-zsh.yml tags=developer
 - include: clang.yml tags=developer
+- include: distr_compile.yml tags=developer
 
 #- name: Set Zsh as default shell
 #  shell: chsh -s $(which zsh)

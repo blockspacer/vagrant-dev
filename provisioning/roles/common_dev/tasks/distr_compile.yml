@@ -14,3 +14,9 @@
     - ccache
     - distcc
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Create Local CCache directory
+  shell: mkdir -p {{ ccache_directory }}
+
+- name: Change ownership
+  shell: chown -R {{ user }}:{{ user }} {{ ccache_directory }}

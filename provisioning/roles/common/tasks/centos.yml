@@ -25,4 +25,5 @@
     - htop
     - yum-plugin-fastestmirror
     - ncurses
+    - tree
 

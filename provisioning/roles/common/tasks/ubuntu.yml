@@ -22,6 +22,7 @@
     - iftop
     - htop
     - libncurses5
+    - tree
 
 - name: Remove unused packages
   apt: name={{ item }} state=absent
