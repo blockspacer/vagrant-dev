@@ -10,6 +10,8 @@
     - sudo
     - tmux
     - wget
+    - zip
+    - unzip
     - xz-utils
     - zlib1g
     - zlibc

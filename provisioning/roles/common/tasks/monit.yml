@@ -12,3 +12,9 @@
   with_items:
     - monit
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Install monitrc
+  template: src=monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0600
+
+- name: Start Monitd
+  service: name=monit state=started

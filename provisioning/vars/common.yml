@@ -9,5 +9,8 @@ tig_version: 2.0.2
 
 ccache_directory: /var/cache/ccache
 
+# Monit configuration
+monit_port: 2812
+
 local_bin:
   PATH: "{{ lookup('env', 'PATH') }}:/usr/local/bin"

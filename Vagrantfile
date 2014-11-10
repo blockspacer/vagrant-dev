@@ -57,6 +57,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Enable provisioning with Ansible
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "provisioning/site.yml"
+
+    ansible.extra_vars = {
+      host_address: "192.168.10.100"
+    }
   end
 
 end
