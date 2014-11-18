@@ -10,7 +10,7 @@
   copy: src=RPM-GPG-KEY-elrepo.org dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org owner=root group=root mode=0444
 
 - name: Copy EPEL-t rpm-gpg repo key
-  copy: src=RPM-GPG-KEY-EPEL-6 dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6 owner=root group=root mode=0444
+  copy: src=RPM-GPG-KEY-EPEL-7 dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 owner=root group=root mode=0444
 
 - name: Configure EL Repo
   copy: src=elrepo.repo dest=/etc/yum.repos.d/elrepo.repo owner=root group=root mode=0644

@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define 'centos', primary: true do |centos|
-    centos.vm.box = "parallels/centos-6.5"
+    centos.vm.box = "parallels/centos-7.0"
     centos.vm.hostname = "centos-1"
     centos.vm.network "private_network", ip: "192.168.10.101"
   end

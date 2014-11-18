@@ -19,7 +19,7 @@
 
 - name: Install monitrc
   template: src=monitrc.j2 dest=/etc/monit.conf owner=root group=root mode=0600
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Start Monitd
   service: name=monit state=started

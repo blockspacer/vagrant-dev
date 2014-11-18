@@ -44,7 +44,6 @@
 
 - include: tig.yml tags=git
 - include: git.yml tags=git
-- include: autoconf.yml tags=developer
 
 - name: Install additional Developer Tools
   yum: name={{ item }} state=present
