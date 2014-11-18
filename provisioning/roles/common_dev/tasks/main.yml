@@ -12,6 +12,7 @@
 - include: clang.yml tags=developer
 - include: distr_compile.yml tags=developer
 - include: tig.yml tags=git,developer
+- include: poco.yml tags=poco,developer
 
 #- name: Set Zsh as default shell
 #  shell: chsh -s $(which zsh)

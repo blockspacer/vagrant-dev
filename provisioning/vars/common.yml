@@ -12,5 +12,7 @@ ccache_directory: /var/cache/ccache
 # Monit configuration
 monit_port: 2812
 
+poco_version: 1.4.7-all
+
 local_bin:
   PATH: "{{ lookup('env', 'PATH') }}:/usr/local/bin"

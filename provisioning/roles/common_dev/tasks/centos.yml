@@ -29,15 +29,6 @@
     - libuuid-devel
     - cmake
     - ncurses-devel
-    - poco-foundation
-    - poco-util
-    - poco-crypto
-    - poco-net
-    - poco-netssl
-    - poco-sqlite
-    - poco-xml
-    - poco-zip
-    - poco-devel
     - docker-io
     - scons
 

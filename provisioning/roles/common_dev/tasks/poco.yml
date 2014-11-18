@@ -1,0 +1,38 @@
+---
+# Install Poco libraries
+
+- name: Install Poco Dependancies
+  apt: name={{ item }} state=present
+  with_items:
+    - openssl
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install Poco Dependancies
+  yum: name={{ item }} state=present
+  with_items:
+    - openssl-devel
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Copy Poco {{ poco_version }} tarball
+  copy: src=poco-{{ poco_version }}.tar.gz dest=/tmp/poco-{{ poco_version }}.tar.gz owner=root group=root mode=0444
+  register: copy_result
+
+- name: Untar Poco {{ poco_version }}
+  shell: tar -xvzf /tmp/poco-{{ poco_version }}.tar.gz
+         chdir=/tmp
+  when: copy_result.changed
+
+- name: Configure Poco {{ poco_version }}
+  shell: ./configure --no-tests --no-samples -j2 --prefix=/usr/local --omit=Data/ODBC,Data/MySQL
+         chdir=/tmp/poco-{{ poco_version }}
+  when: copy_result.changed
+
+- name: Build Poco {{ poco_version }}
+  shell: make -s
+         chdir=/tmp/poco-{{ poco_version }}
+  when: copy_result.changed
+
+- name: Install Poco {{ poco_version }}
+  shell: make -s install
+         chdir=/tmp/poco-{{ poco_version }}
+  when: copy_result.changed
