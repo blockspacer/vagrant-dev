@@ -9,6 +9,7 @@
   git: repo=git://github.com/git/git.git
        dest=/tmp/git
        version={{ git_version }}
+       accept_hostkey=True
   register: result
 
 - name: Build All

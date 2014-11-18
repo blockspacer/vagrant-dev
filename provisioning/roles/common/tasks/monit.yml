@@ -7,6 +7,10 @@
     - monit
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: Install monitrc
+  template: src=monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0600
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 - name: Install minimum packages
   yum: name={{ item }} state=present
   with_items:
@@ -14,7 +18,8 @@
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Install monitrc
-  template: src=monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0600
+  template: src=monitrc.j2 dest=/etc/monit.conf owner=root group=root mode=0600
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Start Monitd
   service: name=monit state=started

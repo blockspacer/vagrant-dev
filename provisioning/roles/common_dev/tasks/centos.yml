@@ -9,6 +9,7 @@
   with_items:
     - sudo
     - vim
+    - gvim
     - ctags
     - zsh
     - tmux
@@ -38,6 +39,7 @@
     - poco-zip
     - poco-devel
     - docker-io
+    - scons
 
 - name: Check for git
   command: which git

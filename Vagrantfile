@@ -15,14 +15,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Define multiple boxes that we can use
-  config.vm.define 'ubuntu', primary: true do |ubuntu|
+  config.vm.define 'ubuntu', autostart: false do |ubuntu|
     ubuntu.vm.box = "parallels/ubuntu-14.04"
     ubuntu.vm.hostname = "ubuntu-1"
     ubuntu.vm.network "private_network", ip: "192.168.10.100"
   end
 
-  config.vm.define 'centos', autostart: false do |centos|
+  config.vm.define 'centos', primary: true do |centos|
     centos.vm.box = "parallels/centos-6.5"
+    centos.vm.hostname = "centos-1"
+    centos.vm.network "private_network", ip: "192.168.10.101"
   end
 
   # Disable automatic box update checking. If you disable this, then
@@ -59,7 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provisioning/site.yml"
 
     ansible.extra_vars = {
-      host_address: "192.168.10.100"
+      host_address: "192.168.10.101"
     }
   end
 

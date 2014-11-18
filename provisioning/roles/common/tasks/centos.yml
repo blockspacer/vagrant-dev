@@ -29,3 +29,7 @@
     - ncurses
     - tree
 
+- name: Remove unused packages
+  yum: name={{ item }} state=absent
+  with_items:
+    - puppet

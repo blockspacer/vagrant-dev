@@ -1,5 +1,10 @@
 ---
 # Additional YUM repos to add
+#
+- name: Make sure Python bindings are installed
+  yum: name={{ item }} state=present
+  with_items:
+    - libselinux-python
 
 - name: Copy EL rpm-gpg repo key
   copy: src=RPM-GPG-KEY-elrepo.org dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org owner=root group=root mode=0444
