@@ -1,0 +1,37 @@
+---
+# Build xRDP
+
+- name: Install xRDP prereqs
+  yum: name={{ item }} state=present
+  with_items:
+    - pam-devel
+    - libX11-devel
+    - libXfixes-devel
+    - libXrandr-devel
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Download xRDP {{ xrdp_version }}
+  get_url: url=https://github.com/neutrinolabs/xrdp/archive/v{{ xrdp_version }}.zip
+           dest=/tmp/v{{ xrdp_version }}.zip
+  register: get_url_result
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Unzip xRDP
+  shell: unzip v{{ xrdp_version }}.zip
+         chdir=/tmp
+  when: get_url_result.changed
+
+- name: Bootstrap xRDP
+  shell: ./bootstrap
+    chdir=/tmp/xrdp-{{ xrdp_version }}
+  when: get_url_result.changed
+
+- name: Configure xRDP
+  shell: ./configure
+    chdir=/tmp/xrdp-{{ xrdp_version }}
+  when: get_url_result.changed
+
+- name: Build & Install xRDP
+  shell: make && make install
+    chdir=/tmp/xrdp-{{ xrdp_version }}
+  when: get_url_result.changed

@@ -29,6 +29,8 @@
     - ncurses
     - tree
 
+- include: xrdp.yml
+
 - name: Remove unused packages
   yum: name={{ item }} state=absent
   with_items:
