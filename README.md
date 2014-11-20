@@ -8,8 +8,8 @@ Supported Distributions
 
 * Debian
 
-  - Tested using Ubuntu 12.04
+  - Tested using Ubuntu 14.04
 
 * RedHat
 
-  - Tested using CentOS 6.5
+  - Tested using CentOS 7.0
